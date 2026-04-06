@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Reset e Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #11151a;
+            overflow: hidden;
+        }
+
+        nav {
+            height: 100vh;
+            display: flex;
+            justify-content: center; 
+            align-items: center;     
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+        }
+
+        li {
+            margin: 15px 0;
+        }
+
+        /* Link principal - Estilo "Vazio" */
+        a {
+            text-decoration: none;
+            font-size: 4rem; /* Aumentado para destacar o efeito */
+            font-weight: 900;
+            padding: 10px 60px;
+            display: block;
+            position: relative;
+            text-transform: uppercase;
+            
+            /* Cria o contorno das letras */
+            color: transparent;
+            -webkit-text-stroke: 1px #fff;
+            
+            transition: color 0.5s ease;
+        }
+
+        /* Camada de preenchimento (Overlay) */
+        a::after {
+            content: attr(data-text); /* Pega o texto do atributo HTML */
+            position: absolute;
+            left: 60px; /* Alinhado com o padding-left do 'a' */
+            top: 10px;  /* Alinhado com o padding-top do 'a' */
+            color: #007bff;
+            -webkit-text-stroke: 0px transparent;
+            width: 0;
+            overflow: hidden;
+            white-space: nowrap;
+            transition: width 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        /* A Linha Vertical que atravessa */
+        a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 4px;
+            background-color: #007bff;
+            transition: left 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            z-index: 2;
+        }
+
+        /* Hover: Enche o texto e move a linha */
+        a:hover::after {
+            width: calc(100% - 30px); /* Preenche proporcional ao texto */
+        }
+
+        a:hover::before {
+            left: calc(100% - 4px);
+        }
+
+        a:hover {
+            -webkit-text-stroke: 1px #007bff; /* Contorno também muda para azul */
+        }
+
+    </style>
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li><a href="#" data-text="Home">Home</a></li>
+        <li><a href="#" data-text="About">About</a></li>
+        <li><a href="#" data-text="Services">Services</a></li>
+        <li><a href="#" data-text="Team">Team</a></li>
+        <li><a href="#" data-text="Contact">Contact</a></li>
+    </ul>
+</nav>
+
+</body>
+</html>
